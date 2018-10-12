@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tuto AngularJs</title>
+</head>
+
+<!-- Directives natives : ng-app, ng-model, ect. -->
+
+<body ng-app="MonApp">
+    <div ng-view></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.7.5/angular-route.min.js"></script>
+    <script>
+
+        var app = angular.module("MonApp", ['ngRoute']); // Le tableau vide permet d'inclure des modules dans l'application Angular
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when('/', { templateUrl: 'partials/home.html' })
+                .when('/comments', { templateUrl: 'partials/comments.html', controller: 'CommentsCtrl' })
+                .otherwise({ redirectTo: '/' }) // Permet de rediriger vers "/" si l'url n'est pas connue.
+        });
+
+        app.controller('PostsController', function ($scope) {
+
+        });
+
+        app.controller("CommentsCtrl", function ($scope) {
+            $scope.comments = [
+                {
+                    "username": "Della",
+                    "email": "dellaharmon@papricut.com",
+                    "city": "Coral",
+                    "content": "Nisi eiusmod tempor in commodo aute tempor. Elit excepteur ut velit irure dolor exercitation voluptate eu aliqua exercitation. Eiusmod minim duis ad ea ea voluptate nisi veniam ad mollit labore. Eiusmod qui sit id enim proident. Duis enim in incididunt qui do qui nisi."
+                },
+                {
+                    "username": "Chaney",
+                    "email": "chaneyharmon@papricut.com",
+                    "city": "Roland",
+                    "content": "Veniam aliqua ullamco officia ea in quis mollit ad commodo ut veniam ex. Proident esse dolore enim quis elit ipsum est. Reprehenderit dolor cupidatat duis sunt eu sint tempor dolor pariatur aute voluptate velit veniam. Incididunt in consectetur sint do ad. Velit eiusmod eiusmod ex labore culpa irure enim dolor."
+                },
+                {
+                    "username": "Carter",
+                    "email": "carterharmon@papricut.com",
+                    "city": "Orviston",
+                    "content": "Velit proident sit tempor aute. Est occaecat mollit incididunt sit consectetur dolore. Non officia magna qui commodo quis adipisicing fugiat quis eu. Cillum commodo esse in nulla aliquip aliquip mollit laboris irure excepteur anim quis. Aliquip sint aliquip velit esse ad sint nostrud officia Lorem ad aute."
+                },
+                {
+                    "username": "Rhodes",
+                    "email": "rhodesharmon@papricut.com",
+                    "city": "Gwynn",
+                    "content": "Irure adipisicing veniam ad proident adipisicing minim. Nulla consequat nostrud Lorem qui minim duis ad aliqua ad nulla sunt. Do aute sit adipisicing adipisicing officia cupidatat. Nostrud exercitation et dolore labore deserunt consectetur excepteur et proident fugiat sit. Culpa consequat labore officia aliquip Lorem qui magna anim."
+                },
+                {
+                    "username": "Becky",
+                    "email": "beckyharmon@papricut.com",
+                    "city": "Ripley",
+                    "content": "Labore nulla consectetur ad reprehenderit ad exercitation proident culpa aliquip non reprehenderit. Ex nostrud minim duis cupidatat fugiat exercitation sunt officia id deserunt minim occaecat irure elit. Occaecat adipisicing dolore consectetur eiusmod ea qui. Mollit est dolore ut ullamco sit labore nisi esse tempor duis deserunt labore nulla magna. Aliqua ipsum minim nulla velit quis consequat Lorem minim veniam."
+                }
+            ]
+        });
+
+    </script>
+</body>
+
+</html>
